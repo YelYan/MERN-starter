@@ -11,8 +11,6 @@ const Register = () => {
   }
   return (
     <div>
-      <h1>Register</h1>
-
       <AuthForm
         type="register"
         onSubmit={onSubmit}

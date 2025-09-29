@@ -21,7 +21,7 @@ apiClient.interceptors.response.use(
         if(error?.response?.status == 401){
         // Clear user data from React Query
         queryClient.setQueryData(["user"], null);
-        showValidationError(error)
+        // showValidationError(error)
         }
         return Promise.reject(error)
     }
