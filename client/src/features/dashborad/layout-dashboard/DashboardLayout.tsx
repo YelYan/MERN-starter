@@ -1,18 +1,19 @@
 import { Outlet } from "react-router";
-import { DashboardNavbar } from "@/shared/common";
-import { DashboardSidebar } from "@/shared/common";
+import DashboardNavbar from "./DashboardNavbar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import DashboardSidebar from "./DashboardSidebar";
 
 const DashboardLayout = () => {
   return (
-    <main className="flex">
+    <SidebarProvider>
       <DashboardSidebar />
       <div className="w-full">
         <DashboardNavbar />
-        <div className="px-4">
+        <main className="px-4">
           <Outlet />
-        </div>
+        </main>
       </div>
-    </main>
+    </SidebarProvider>
   );
 };
 

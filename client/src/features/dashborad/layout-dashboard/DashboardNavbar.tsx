@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Moon, User, Settings, LogOut, Sun } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +19,9 @@ const DashboardNavbar = () => {
   const { setTheme } = useTheme();
   return (
     <nav className="flex justify-between w-full shadow-xs dark:shadow-2xl dark:shadow-red-500 p-4">
-      <span>collapsebutton</span>
+      <span>
+        <SidebarTrigger />
+      </span>
 
       <Link to="/dashboard">Dashboard</Link>
       <div className="flex items-center gap-4">
