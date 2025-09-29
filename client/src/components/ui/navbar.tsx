@@ -1,4 +1,4 @@
-import { Book, Menu, Sunset, Trees, Zap } from "lucide-react";
+import { Book, Menu, Sunset, Trees, Zap, Sun, Moon } from "lucide-react";
 import { Link } from "react-router";
 import {
   Accordion,
@@ -23,7 +23,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useAuth } from "@/shared/hooks/useAuth";
+import { useTheme } from "@/app/providers/ThemeProvider";
 import { useLogout } from "@/services/auth/auth-api-client";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface MenuItem {
   title: string;
@@ -139,6 +146,7 @@ const Navbar = ({
 }: Navbar1Props) => {
   const { isLoggedIn } = useAuth();
   const logoutMutation = useLogout();
+  const { setTheme } = useTheme();
   return (
     <section className="py-4">
       <div className="container">
@@ -164,7 +172,27 @@ const Navbar = ({
               </NavigationMenu>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="icon">
+                  <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                  <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                  <span className="sr-only">Toggle theme</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => setTheme("light")}>
+                  Light
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("dark")}>
+                  Dark
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setTheme("system")}>
+                  System
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             {isLoggedIn ? (
               <Button
                 variant={"primary"}
@@ -197,6 +225,7 @@ const Navbar = ({
                 alt={logo.alt}
               />
             </a>
+
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon">
@@ -205,7 +234,7 @@ const Navbar = ({
               </SheetTrigger>
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle>
+                  <SheetTitle className="flex items-center gap-4">
                     <a href={logo.url} className="flex items-center gap-2">
                       <img
                         src={logo.src}
@@ -213,6 +242,26 @@ const Navbar = ({
                         alt={logo.alt}
                       />
                     </a>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="outline" size="icon">
+                          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+                          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+                          <span className="sr-only">Toggle theme</span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={() => setTheme("light")}>
+                          Light
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => setTheme("dark")}>
+                          Dark
+                        </DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => setTheme("system")}>
+                          System
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
@@ -225,12 +274,28 @@ const Navbar = ({
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
-                    <Button asChild variant="outline">
-                      <Link to={auth.login.url}>{auth.login.title}</Link>
-                    </Button>
-                    <Button asChild>
-                      <Link to={auth.signup.url}>{auth.signup.title}</Link>
-                    </Button>
+                    <div className="flex gap-2">
+                      {isLoggedIn ? (
+                        <Button
+                          variant={"primary"}
+                          className="text-white"
+                          onClick={() => logoutMutation.mutate()}
+                        >
+                          Logout
+                        </Button>
+                      ) : (
+                        <>
+                          <Button asChild variant="outline" size="sm">
+                            <Link to={auth.login.url}>{auth.login.title}</Link>
+                          </Button>
+                          <Button asChild size="sm">
+                            <Link to={auth.signup.url}>
+                              {auth.signup.title}
+                            </Link>
+                          </Button>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               </SheetContent>
@@ -249,7 +314,11 @@ const renderMenuItem = (item: MenuItem) => {
         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
         <NavigationMenuContent className="bg-popover text-popover-foreground">
           {item.items.map((subItem) => (
-            <NavigationMenuLink asChild key={subItem.title} className="w-80">
+            <NavigationMenuLink
+              asChild
+              key={subItem.title}
+              className="w-80 bg-red-500"
+            >
               <SubMenuLink item={subItem} />
             </NavigationMenuLink>
           ))}
