@@ -6,13 +6,13 @@ import {
   Route,
   createRoutesFromElements,
 } from "react-router";
-import Layout from "@/shared/layouts/Layout";
-import DashboardLayout from "@/shared/layouts/DashboardLayout";
+import Layout from "@/shared/common/layouts/Layout";
+import DashboardLayout from "@/features/dashborad/layout-dashboard/DashboardLayout";
 import { LazyHome } from "@/app/routes/lazy";
 import { privateRoutes, publicRoutes, allAdminRoutes } from "@/app/routes";
 import AuthGuard from "@/app/routes/guard/AuthGuard";
 import NotFound from "@/features/NotFound/NotFound";
-import { LoadingSpinner } from "@/shared/common";
+import { GlobalLoading } from "@/shared/common";
 
 const routes = createRoutesFromElements(
   <Route>
@@ -21,7 +21,7 @@ const routes = createRoutesFromElements(
         index
         path="/"
         element={
-          <Suspense fallback={<LoadingSpinner />}>
+          <Suspense fallback={<GlobalLoading />}>
             <LazyHome />
           </Suspense>
         }
@@ -35,7 +35,7 @@ const routes = createRoutesFromElements(
             path={route.path}
             element={
               <AuthGuard>
-                <Suspense fallback={<LoadingSpinner />}>
+                <Suspense fallback={<GlobalLoading />}>
                   {route.element}
                 </Suspense>
               </AuthGuard>
@@ -51,7 +51,7 @@ const routes = createRoutesFromElements(
             key={route.key + index}
             path={route.path}
             element={
-              <Suspense fallback={<LoadingSpinner />}>{route.element}</Suspense>
+              <Suspense fallback={<GlobalLoading />}>{route.element}</Suspense>
             }
           />
         ))}
@@ -66,7 +66,7 @@ const routes = createRoutesFromElements(
           path={route.path}
           element={
             <AuthGuard allowedRoles={["admin"]}>
-              <Suspense fallback={<LoadingSpinner />}>{route.element}</Suspense>
+              <Suspense fallback={<GlobalLoading />}>{route.element}</Suspense>
             </AuthGuard>
           }
         />

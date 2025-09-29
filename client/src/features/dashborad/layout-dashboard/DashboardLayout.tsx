@@ -4,11 +4,11 @@ import { DashboardSidebar } from "@/shared/common";
 
 const DashboardLayout = () => {
   return (
-    <main className="flex gap-2">
+    <main className="flex">
       <DashboardSidebar />
-      <div className="dashboard-content">
+      <div className="w-full">
         <DashboardNavbar />
-        <div className="main-content">
+        <div className="px-4">
           <Outlet />
         </div>
       </div>
