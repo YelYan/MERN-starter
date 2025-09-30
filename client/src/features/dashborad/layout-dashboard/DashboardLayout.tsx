@@ -9,7 +9,7 @@ const DashboardLayout = () => {
       <DashboardSidebar />
       <div className="w-full">
         <DashboardNavbar />
-        <main className="px-4">
+        <main className="p-4">
           <Outlet />
         </main>
       </div>

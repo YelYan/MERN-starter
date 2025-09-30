@@ -2,8 +2,10 @@ import { Navbar } from "@/components/ui/navbar";
 
 const Header = () => {
   return (
-    <header className="sticky top-0 shadow-xs w-full container bg-white dark:bg-card">
-      <Navbar />
+    <header className="sticky top-0 shadow-xs w-full bg-white dark:bg-card">
+      <div className="container">
+        <Navbar />
+      </div>
     </header>
   );
 };
