@@ -6,7 +6,7 @@ import TodoList from "../components/TodoList";
 
 const Dashboard = () => {
   return (
-    <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-[900px] lg:grid-rows-2 p-4">
+    <div className="grid gird-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 h-[900px] lg:grid-rows-2 p-4 items-center md:items-stretch">
       <div className="bg-secondary p-4 rounded-lg lg:col-span-2  2xl:col-span-2">
         <AppBarChart />
       </div>
