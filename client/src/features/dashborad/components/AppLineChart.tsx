@@ -28,7 +28,7 @@ const chartConfig = {
 
 const AppLineChart = () => {
   return (
-    <div className="w-full h-full grid place-content-center">
+    <div className="w-full h-full">
       <h3>Total Visitors</h3>
       <ChartContainer config={chartConfig} className="mt-6 max-h-[500px]">
         <LineChart
