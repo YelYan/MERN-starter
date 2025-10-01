@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import { Moon, User, Settings, LogOut, Sun } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { SidebarTrigger } from "@/components/ui/sidebar";
@@ -18,12 +17,11 @@ const DashboardNavbar = () => {
   const logout = useLogout();
   const { setTheme } = useTheme();
   return (
-    <nav className="flex justify-between w-full shadow-xs dark:shadow-2xl dark:shadow-red-500 p-4">
+    <nav className="flex justify-between w-full shadow-xs bg-primary-foreground dark:bg-background dark:shadow-2xl dark:shadow-red-500 p-4 sticky top-0 z-10">
       <span>
         <SidebarTrigger />
       </span>
 
-      <Link to="/dashboard">Dashboard</Link>
       <div className="flex items-center gap-4">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

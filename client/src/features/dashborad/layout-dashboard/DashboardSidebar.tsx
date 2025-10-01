@@ -1,8 +1,7 @@
 import {
-  Calendar,
   Home,
   Inbox,
-  Search,
+  ShoppingCart,
   Settings,
   User2,
   ChevronUp,
@@ -14,6 +13,8 @@ import {
   ChevronRight,
   Pencil,
   Paperclip,
+  User,
+  CircleDollarSign,
 } from "lucide-react";
 import { Link } from "react-router";
 import LOGO from "/vite.svg";
@@ -55,19 +56,24 @@ const items = [
     icon: Home,
   },
   {
+    title: "User",
+    url: "/dashboard/users",
+    icon: User,
+  },
+  {
+    title: "Product",
+    url: "/dashboard/products",
+    icon: ShoppingCart,
+  },
+  {
+    title: "Payment",
+    url: "/dashboard/payment",
+    icon: CircleDollarSign,
+  },
+  {
     title: "Inbox",
     url: "#",
     icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
   },
   {
     title: "Settings",
@@ -78,7 +84,7 @@ const items = [
 
 const DashboardSidebar = () => {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="bg-accent">
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>

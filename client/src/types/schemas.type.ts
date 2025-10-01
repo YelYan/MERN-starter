@@ -24,3 +24,10 @@ export type AuthFormPropsT = {
   isPending?: boolean;
 };
 
+export type UserFormPropsT = {
+    isSuccess?: boolean;
+    onSubmit: (data: unknown) => void;
+    isPending?: boolean;
+    type: "edit" | "add";
+};
+

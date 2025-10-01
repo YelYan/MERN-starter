@@ -22,7 +22,7 @@ const TodoList = () => {
       <h1 className="text-lg font-medium mb-6">Todo List</h1>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button variant={"transparent"} className="w-full">
+          <Button variant={"white"} className="w-full">
             <CalendarIcon />
             {date ? format(date, "PPP") : <span>Pick a date</span>}
           </Button>

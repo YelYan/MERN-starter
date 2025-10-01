@@ -29,3 +29,15 @@ export const LazyDashboard = lazy(
 export const LazyDashboardProject = lazy(
   () => import("@/features/dashborad/pages/DashboardProject")
 );
+export const LazyDashboardUsers = lazy(
+  () => import("@/features/dashborad/pages/DashboardUsers")
+);
+export const LazyDashboardSingleUser = lazy(
+  () => import("@/features/dashborad/pages/DashboardSingleUser")
+);
+export const LazyDashboardProducts = lazy(
+  () => import("@/features/dashborad/pages/DashboardProducts")
+);
+export const LazyDashboardPayment = lazy(
+  () => import("@/features/dashborad/pages/DashboardPayment")
+);

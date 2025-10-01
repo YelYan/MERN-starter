@@ -86,6 +86,14 @@ const latestTransactions = [
       "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=800",
     count: 2500,
   },
+  {
+    id: 5,
+    title: "Testing purpose",
+    badge: "Dakota Fanning",
+    image:
+      "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?auto=compress&cs=tinysrgb&w=800",
+    count: 2500,
+  },
 ];
 
 const CardList = ({ title }: { title: string }) => {
@@ -93,7 +101,7 @@ const CardList = ({ title }: { title: string }) => {
     title === "Popular Content" ? popularContent : latestTransactions;
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      <h1 className="text-lg font-medium mb-4">{title}</h1>
+      <h1 className="text-lg font-medium mb-4 px-2">{title}</h1>
 
       <ScrollArea className="h-[360px] w-full">
         <div className="flex flex-col gap-2">
@@ -110,12 +118,14 @@ const CardList = ({ title }: { title: string }) => {
                 />
               </div>
               <CardContent className="flex-1 p-0">
-                <CardTitle className="text-sm font-medium whitespace-nowrap overflow-hidden text-ellipsis">
+                <CardTitle className="text-xs font-medium whitespace-nowrap overflow-hidden text-ellipsis">
                   {item.title}
                 </CardTitle>
-                <Badge variant="secondary">{item.badge}</Badge>
+                <Badge variant="secondary" className="p-1 text-xs">
+                  {item.badge}
+                </Badge>
               </CardContent>
-              <CardFooter className="p-0 flex-shrink-0">
+              <CardFooter className="p-0 flex-shrink-0 text-xs">
                 {item.count / 1000}K
               </CardFooter>
             </Card>
